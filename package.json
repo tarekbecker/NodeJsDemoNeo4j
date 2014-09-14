@@ -1,0 +1,18 @@
+{
+    "name": "node-demo",
+    "main": "app.js",
+    "description": "Litte demo to show how powerful node.js is",
+    "private": true,
+    "author": [
+        {
+            "name": "Tarek Auel",
+            "email": "tarek.auel@gmail.com"
+        }
+    ],
+    "dependencies": {
+        "express": "~4.0.0"
+    },
+    "scripts": {
+        "test": "nodeunit ./test/*"
+    }
+}
