@@ -35,7 +35,7 @@ module.exports = (function() {
                     date: new Date(now.getFullYear(), now.getMonth(), now.getDate())
                 }
             };
-            checkResponseHeader(request.get('/' + courseName + "/" + lectureName))
+            checkResponseHeader(request.get('/courses/' + courseName + "/" + lectureName))
                 .end(function (err, res) {
                     if (err) {
                         test.fail(err);

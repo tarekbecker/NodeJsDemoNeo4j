@@ -6,7 +6,8 @@
 module.exports = (function() {
 
     var app     = require('../../lib/server.js')(true),
-        request = require('supertest')(app);
+        request = require('supertest')(app),
+        course  = require('../../lib/model/course.js');
 
     var courseName = "testCourse";
     var lectureName = "lectureName";
@@ -27,7 +28,7 @@ module.exports = (function() {
                 room: '240b'
             };
 
-            checkResponseHeader(request.get('/' + courseName))
+            checkResponseHeader(request.get('/courses/' + courseName))
                 .end(function (err, res) {
                     if (err) {
                         test.fail(err);
@@ -39,8 +40,10 @@ module.exports = (function() {
                 });
         },
         testPostLectureOfCourse: function(test) {
+            var newCourse = new course(courseName);
             request
-                .post('/' + courseName)
+                .post('/courses')
+                .send(newCourse)
                 .expect(201)
                 .end(function (err) {
                     if (err) {
